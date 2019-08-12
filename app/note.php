@@ -1,5 +1,5 @@
 <?php
-// Create connection
+require ('config.php')
 $conn = new mysqli($servername, $username, $password);
 
 // Check connection
