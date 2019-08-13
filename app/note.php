@@ -7,9 +7,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 echo "Connected successfully";
-$Title = $_GET['Title'];
-$Text = $_POST['Text'];
-$Author = $_POST['Author'];
+$Title = filter_var($_GET['Title'], FILTER_SANITIZE_STRING);
+$Text = filter_var($_POST['Text'], FILTER_SANITIZE_STRING);
+$Author = filter_var($_POST['Author'], FILTER_SANITIZE_STRING);
+
+
 
 $sql = "INSERT INTO NoteData (Title, Text, Author)
 VALUES ('$Title', '$Text', '$Author')";
