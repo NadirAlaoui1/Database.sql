@@ -1,6 +1,6 @@
 <?php
 require ('config.php');
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqlie($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
@@ -21,7 +21,27 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
+//validate
+//if (empty($author)) {
+//  $feedback['author'] = "Author may not be empty.";
+//}
+//if (empty($title)) {
+//    $feedback['title'] = "Title may not be empty.";
+//} 
+//if (empty($text)) {
+//    $feedback['text'] = "Text may not be empty.";
+//} 
+
+
+} elseif (isset($_POST['update'])) {
+    $sql="UPDATE notes
+    SET content = '$update'
+    WHERE Title = '$title'";
+    if ($conn->query($sql) === TRUE) {
+        return "Succesfully updated ".$title;
+        } else {
+        return "Error: " . $sql . "<br>" . $conn->error;
+        }
 
 $conn->close();
 ?>
-
