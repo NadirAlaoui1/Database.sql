@@ -68,5 +68,8 @@ if ($result->num_rows > 0) {
         return "Error: " . $sql . "<br>" . $conn->error;
         }
 
+        echo json_encode($feedback);
+
+
 $conn->close();
 ?>
